@@ -1,7 +1,6 @@
 package com.avshek.rest_api_test_application.controller;
 
 import com.avshek.rest_api_test_application.model.ApiRequest;
-import com.avshek.rest_api_test_application.repository.ApiRequestRepository;
 import com.avshek.rest_api_test_application.service.ApiRequestService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,17 +45,22 @@ public class ApiRequestController {
 
 
     @GetMapping("/saved")
-    public List<ApiRequest> getAllSavedRequests(){
+    public List<ApiRequest> getAllApiRequests(){
         return apiRequestService.getAllApiRequest();
     }
 
     @PostMapping("/save")
-    public ApiRequest saveRequest(@RequestBody ApiRequest apiRequest){
+    public ApiRequest saveApiRequest(@RequestBody ApiRequest apiRequest){
         return apiRequestService.saveApiRequest(apiRequest);
     }
 
+    @GetMapping("/{id}")
+    public ApiRequest getApiRequestById(@PathVariable Long id){
+        return apiRequestService.getApiRequestById(id);
+    }
+
     @DeleteMapping("/delete/{id}")
-    public void deleteRequest(@PathVariable Long id){
+    public void deleteApiRequest(@PathVariable Long id){
         apiRequestService.deleteApiRequest(id);
     }
 

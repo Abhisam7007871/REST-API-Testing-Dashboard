@@ -21,6 +21,11 @@ public class ApiRequestService {
 
     }
 
+    public ApiRequest getApiRequestById(Long id){
+        return apiRequestRepository.findById(id).orElse(null);
+    }
+
+
     public void deleteApiRequest(Long id){
         apiRequestRepository.deleteById(id);
     }
