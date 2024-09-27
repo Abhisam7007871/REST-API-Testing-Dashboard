@@ -23,6 +23,21 @@ public class ApiRequestController {
     @Autowired
     private ApiRequestService apiRequestService;
 
+    @GetMapping("/public")
+    public String publicDashboard() {
+        return "Welcome to the Public API!";
+    }
+
+    @GetMapping("/user")
+    public String userDashboard() {
+        return "Welcome to the User Dashboard!";
+    }
+
+    @GetMapping("/admin")
+    public String adminDashboard() {
+        return "Welcome to the Admin Dashboard!";
+    }
+
     @PostMapping
     public ResponseEntity<?> testApi(@RequestBody ApiRequest apiRequest){
         RestTemplate restTemplate = new RestTemplate();
