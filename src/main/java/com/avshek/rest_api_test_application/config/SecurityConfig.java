@@ -21,9 +21,9 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/public/**").permitAll() // Public access to APIs under "/api/public"
-                        .requestMatchers("/api/user/**").hasAnyRole("USER", "ADMIN") // User access
-                        .requestMatchers("/api/admin/**").hasRole("ADMIN") // Admin access
+                        .requestMatchers("/api/test/public").permitAll() // Public access
+                        .requestMatchers("/api/test/user").hasAnyRole("USER", "ADMIN") // User access
+                        .requestMatchers("/api/test/admin").hasRole("ADMIN") // Admin access
                         .anyRequest().authenticated() // All other requests require authentication
                 )
                 .httpBasic(withDefaults()); // Use Basic Authentication
@@ -48,5 +48,4 @@ public class SecurityConfig {
                 .roles("ADMIN");
         return auth.build();
     }
-
 }
