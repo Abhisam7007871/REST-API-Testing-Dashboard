@@ -3,6 +3,7 @@ package com.avshek.rest_api_test_application.controller;
 import com.avshek.rest_api_test_application.model.ApiRequest;
 import com.avshek.rest_api_test_application.repository.ApiRequestRepository;
 import com.avshek.rest_api_test_application.service.ApiRequestService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +29,8 @@ public class ApiRequestController {
         RestTemplate restTemplate = new RestTemplate();
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setAll(parseHeaders(apiRequest.getHeaders()));
+        Map<String, String> headersMap = parseHeaders(apiRequest.getHeaders());
+        headersMap.forEach(headers::set);  // Add headers from map to HttpHeaders
 
         HttpEntity<String> entity = new HttpEntity<>(apiRequest.getBody(), headers);
 
@@ -39,6 +42,8 @@ public class ApiRequestController {
         );
         return  ResponseEntity.ok(apiRequest.getBody());
     }
+
+
 
     @GetMapping("/saved")
     public List<ApiRequest> getAllSavedRequests(){
@@ -55,10 +60,16 @@ public class ApiRequestController {
         apiRequestService.deleteApiRequest(id);
     }
 
-    private static HttpHeaders parseHeaders(String headersJson) {
-        HttpHeaders headers = new HttpHeaders();
-        // Parse the headers JSON string to map (this can be implemented with a JSON parser)
-        return headers;
+    private Map<String, String> parseHeaders(String headersJson) {
+        Map<String, String> headersMap = new HashMap<>();
+        try{
+            if(headersJson != null && !headersJson.isEmpty()){
+                headersMap = new ObjectMapper().readValue(headersJson,Map.class);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return headersMap;
 
     }
 
