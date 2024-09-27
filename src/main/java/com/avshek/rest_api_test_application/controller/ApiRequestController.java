@@ -38,8 +38,8 @@ public class ApiRequestController {
         return "Welcome to the Admin Dashboard!";
     }
 
-    @PostMapping
-    public ResponseEntity<?> testApi(@RequestBody ApiRequest apiRequest){
+    @PostMapping("/any")
+    public ResponseEntity<?> testApi(@RequestBody ApiRequest apiRequest) {
         RestTemplate restTemplate = new RestTemplate();
 
         HttpHeaders headers = new HttpHeaders();
@@ -48,13 +48,15 @@ public class ApiRequestController {
 
         HttpEntity<String> entity = new HttpEntity<>(apiRequest.getBody(), headers);
 
+        // Handle the request to external URL
         ResponseEntity<String> response = restTemplate.exchange(
                 apiRequest.getUrl(),
                 HttpMethod.valueOf(apiRequest.getMethod()),
                 entity,
                 String.class
         );
-        return  ResponseEntity.ok(apiRequest.getBody());
+
+        return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
     }
 
 
