@@ -41,8 +41,9 @@ This REST API Test Dashboard application allows users to easily test and manage 
 - Maven installed
 - A working internet connection for dependency downloads
 
-### Steps to Run the Project
+## Screenshots
 
-1. **Clone the Repository:**
-   ```bash
-   git clone <repository-url>
+Here are some screenshots of the application:
+
+![Dashboard Image 1](images/screenshots-1.png)
+![Dashboard Image 2](images/screenshots-2.png)
