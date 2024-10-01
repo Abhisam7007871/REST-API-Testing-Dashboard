@@ -1,44 +1,69 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 h1, h2 {
-    color: #333;
-}
-
-form {
-    margin-bottom: 20px;
+    text-align: center;
 }
 
 label {
     display: block;
-    margin: 5px 0;
+    margin-top: 10px;
 }
 
 input, select, textarea {
     width: 100%;
     padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
+    margin-top: 5px;
+    border: 1px solid #ddd;
     border-radius: 4px;
 }
 
+/* Increase the height of the headers textarea */
+#headers {
+    height: 150px;  /* Adjust height as per your requirement */
+}
+
+/* Increase the height of the body textarea */
+#body {
+    height: 200px;  /* Adjust height as per your requirement */
+}
+
+/* Increase the height of the response pre element */
+pre {
+    background-color: #f9f9f9;
+    padding: 20px;  /* Increased padding for better readability */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    height: 400px;  /* Increased height */
+    max-height: none;  /* Remove any height restrictions */
+    white-space: pre-wrap;  /* Allow text wrapping */
+    word-wrap: break-word;
+    overflow: visible;  /* Remove scrollbars */
+    font-size: 14px;  /* Increase font size for better readability */
+}
+
 button {
-    padding: 10px 15px;
-    background-color: #28a745;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
     color: white;
     border: none;
     border-radius: 4px;
+    margin-top: 10px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #218838;
-}
-
-#response {
-    margin-top: 20px;
-    border: 1px solid #ccc;
-    padding: 10px;
+    background-color: #0056b3;
 }
