@@ -47,3 +47,40 @@ Here are some screenshots of the application:
 
 ![Dashboard Image 1](images/screenshots-1.png)
 ![Dashboard Image 2](images/screenshots-2.png)
+
+
+
+## How to Use
+
+**Authorization:**
+
+- Enter your username and password for Basic Authentication in the provided fields.
+
+**HTTP Method:**
+
+- Select the desired HTTP method (GET, POST, PUT, DELETE).
+
+**Headers and Body:**
+
+- Input headers and body content in the respective text areas.
+
+**Make API Request:**
+
+- Click on the button to send the request, and the server response will be displayed below.
+
+**Track Requests:**
+
+- All API requests are automatically saved in the MySQL database for future reference.
+
+## Contributing
+
+- Contributions are welcome! Please follow the standard GitHub workflow:
+
+    - Fork the repository
+    - Create a new feature branch
+    - Make your changes and submit a pull request
+ 
+## Contact
+
+- For any queries or assistance, feel free to reach out at:
+- Email: abhisam7007871@gmail.com
